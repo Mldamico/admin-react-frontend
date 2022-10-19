@@ -25,15 +25,15 @@ const SignUp = () => {
 
   return (
     <div className='my-64'>
-      <form className='flex flex-col w-[80%] md:w-1/2 lg:w-1/3 space-y-6 rounded-lg p-5 mx-auto border-2 border-black text-white' onSubmit={createUser}>
+      <form className='flex flex-col w-[80%] md:w-1/2 lg:w-1/3 space-y-6 rounded-lg p-5 mx-auto border-2 border-white text-white' onSubmit={createUser}>
         <div className='p-5'>
           <h2 className='text-center text-xl md:text-4xl'>Register a new account</h2>
         </div>
         <label htmlFor="username">Username: </label>
-        <input className='bg-[rgb(36,36,36)] border-2 border-cyan-50 rounded-lg p-1' type="text" id='username' name='username' autoComplete='off' value={username} onChange={e => setUsername(e.target.value)} />
-        <label htmlFor="password">Password: </label>
-        <input className='bg-[rgb(36,36,36)] border-2 border-cyan-50 rounded-lg p-1' type="password" id='password' name='password' autoComplete='off' value={password} onChange={e => setPassword(e.target.value)} />
-        <div className='flex justify-end '>
+        <input className='bg-[rgb(36,36,36)] border-[1px] border-cyan-50 rounded-lg p-1 outline-none' type="text" id='username' name='username' autoComplete='off' value={username} onChange={e => setUsername(e.target.value)} />
+        <label className='pt-4' htmlFor="password">Password: </label>
+        <input className='bg-[rgb(36,36,36)] border-[1px] border-cyan-50 rounded-lg p-1 outline-none' type="password" id='password' name='password' autoComplete='off' value={password} onChange={e => setPassword(e.target.value)} />
+        <div className='flex justify-end pt-4'>
           <button className='py-2 px-6 border-2 rounded-xl border-white'>Register</button>
         </div>
       </form>

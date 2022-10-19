@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { logout } from '../store/authSlice'
 import Hamburger from './Hamburger'
-
+import { motion } from 'framer-motion'
 export const Navbar = () => {
   const dispatch = useDispatch()
   const [sidebarOpen, setSidebarOpen] = React.useState(false);
@@ -24,10 +24,10 @@ export const Navbar = () => {
   return (
     <div className='w-full bg-black p-5'>
       <div className="flex items-center justify-between text-white container mx-auto md:flex-row">
-        <h1 className='text-xl md:text-3xl'>Admin</h1>
-        <div className='hidden space-x-7 md:inline-flex'>
+        <motion.div initial={{ opacity: 0, x: -100 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1 }}> <h1 className='text-xl md:text-3xl'><Link to={"/management"}>Admin</Link></h1></motion.div>
+        <motion.div initial={{ opacity: 0, x: 100 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1 }} className='hidden space-x-7 md:inline-flex'>
           {content}
-        </div>
+        </motion.div>
         <div className='md:hidden'>
           <Hamburger isOpen={sidebarOpen} toggleSidebar={setSidebarOpen} />
         </div>
