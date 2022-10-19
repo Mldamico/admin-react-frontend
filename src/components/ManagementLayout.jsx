@@ -8,12 +8,14 @@ import { Navbar } from './Navbar'
 export const ManagementLayout = () => {
   const { username } = useAuth()
   return (
-    <>
+    <div className='flex flex-col sm:flex-row h-full'>
       <Navbar />
 
+      <div className="flex flex-col w-full">
 
-      <Outlet />
+        <Outlet />
+      </div>
 
-    </>
+    </div>
   )
 }
