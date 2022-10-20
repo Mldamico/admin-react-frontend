@@ -26,28 +26,56 @@ export const operationApiSlice = apiSlice.injectEndpoints({
         url: '/operation',
         method: 'GET'
       }),
-      providesTags: [{ type: "Operation", id: 'OPERATIONS' }]
+      providesTags: (result, error, arg) => {
+        if (result?.ids) {
+          return [
+            { type: "Operation", id: 'OPERATIONS' },
+            ...result.ids.map(id => ({ type: 'Operation', id }))
+          ]
+        } else return [{ type: "Operation", id: 'OPERATIONS' }]
+      }
     }),
     getOperationsByIncome: builder.query({
       query: () => ({
         url: '/operation/income',
         method: 'GET'
       }),
-      providesTags: [{ type: "Operation", id: 'OPERATIONS' }]
+      providesTags: (result, error, arg) => {
+        if (result?.ids) {
+          return [
+            { type: "Operation", id: 'OPERATIONS' },
+            ...result.ids.map(id => ({ type: 'Operation', id }))
+          ]
+        } else return [{ type: "Operation", id: 'OPERATIONS' }]
+      }
     }),
     getOperationsByOutcome: builder.query({
       query: () => ({
         url: '/operation/outcome',
         method: 'GET'
       }),
-      providesTags: [{ type: "Operation", id: 'OPERATIONS' }]
+      providesTags: (result, error, arg) => {
+        if (result?.ids) {
+          return [
+            { type: "Operation", id: 'OPERATIONS' },
+            ...result.ids.map(id => ({ type: 'Operation', id }))
+          ]
+        } else return [{ type: "Operation", id: 'OPERATIONS' }]
+      }
     }),
     getLastOperations: builder.query({
       query: () => ({
         url: '/operation/last',
         method: 'GET'
       }),
-      providesTags: [{ type: "Operation", id: 'OPERATIONS' }]
+      providesTags: (result, error, arg) => {
+        if (result?.ids) {
+          return [
+            { type: "Operation", id: 'OPERATIONS' },
+            ...result.ids.map(id => ({ type: 'Operation', id }))
+          ]
+        } else return [{ type: "Operation", id: 'OPERATIONS' }]
+      }
     }),
     editOperation: builder.mutation({
       query: (data) => ({
@@ -57,8 +85,8 @@ export const operationApiSlice = apiSlice.injectEndpoints({
           ...data
         }
       }),
-      invalidatesTags: [
-        { type: 'Operation', id: "OPERATIONS" }
+      invalidatesTags: (result, error, arg) => [
+        { type: 'Operation', id: arg.id }
       ]
     }),
     deleteOperation: builder.mutation({
@@ -68,8 +96,8 @@ export const operationApiSlice = apiSlice.injectEndpoints({
         method: 'DELETE',
         body: { ...data }
       }),
-      invalidatesTags: [
-        { type: 'Operation', id: "OPERATIONS" }
+      invalidatesTags: (result, error, arg) => [
+        { type: 'Operation', id: arg.id }
       ]
     })
   }),
